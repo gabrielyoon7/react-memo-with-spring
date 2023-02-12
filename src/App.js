@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Button } from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
 
 function App() {
+  const [show, setShow] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <>
+      <Alert show={show} variant="success">
+        <Alert.Heading>How's it going?!</Alert.Heading>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
+          lacinia odio sem nec elit. Cras mattis consectetur purus sit amet
+          fermentum.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <hr />
+        <div className="d-flex justify-content-end">
+          <Button onClick={() => setShow(false)} variant="outline-success">
+            Close me y'all!
+          </Button>
+        </div>
+      </Alert>
+
+      {!show && <Button onClick={() => setShow(true)}>Show Alert</Button>}
+    </>
   );
 }
 
